@@ -15,29 +15,34 @@ h1 {
 
 #weather {
   display: none;
-  max-width: 500px;
+  width: 500px;
+  max-width: 90%;
   min-height: 300px;
   margin: 0 auto;
   margin-top: 25px;
   text-align: center;
   font-size: 30px;
-  border: 10px solid white;
-  border-radius: 15px;
+  border: 1px solid black;
+  background-color: lightsteelblue;
 }
 
 #locationInput {
+  background-color: lightsteelblue;
+  padding: 5px;
   display: block;
   margin: 0 auto;
   font-size: 30px;
-  max-width: 500px;
+  max-width: 390px;
+  border: 1px solid black;
 }
 
 input {
   font-size: 25px;
+  max-width: 250px;
 }
 
 #buttonContainer {
-  width: 250px;
+  width: 350px;
   margin: 0 auto;
   margin-top: 20px;
 }
@@ -47,16 +52,46 @@ button {
 }
 
 .dailyForecast {
-  height: 300px;
+  font-size: 22px;
+  padding: 10px;
+  height: 275px;
   margin: 20px;
-  border: 10px solid black;
+  margin-top: 35px;
+  background-color: lightsteelblue;
+  border: 1px solid black;
 }
 
 #threeDayContainer {
+  margin: 0 auto;
+
+  max-width: 1000px;
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto;
 }
 
-p {
-  font-size: 20px;
+#forecastHeading {
+  font-size: 25px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  #forecastHeading {
+    font-size: 18px;
+  }
+  h1 {
+    font-size: 30px;
+  }
+  #threeDayContainer {
+    max-width: 90%;
+    grid-template-columns: auto;
+  }
+  .dailyForecast {
+    font-size: 22px;
+    padding: 10px;
+    height: 250px;
+    margin: 20px;
+    margin-top: 35px;
+    background-color: lightsteelblue;
+    border: 1px solid black;
+  }
 }
