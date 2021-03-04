@@ -176,3 +176,52 @@ function displayThreeDays(location){
 
     }
 }
+
+
+const endpoint = '/countries.json';
+
+const countries = [];
+
+
+fetch(endpoint)
+.then(response => response.json())
+.then(data => countries.push(...data))
+
+
+function findMatches(wordToMatch, countries){
+  return countries.filter(place =>{
+    const regex =  new RegExp(wordToMatch, 'gi');
+    return place.name.match(regex)
+  })
+}
+
+
+function displayMatches(){
+  if (this.value !== ""){
+    const matchArray = findMatches(this.value, countries)
+    const html = matchArray.map(place =>{
+      const regex = new RegExp(this.value, 'gi');
+      const country = place.name.replace(regex, `<span class="hl">${this.value}</span>`);
+   
+  
+      return`
+      <li>
+        <span class ="name">${country}</span>
+        </li>`;
+    }).join('')
+    suggestions.innerHTML = html;
+  }
+
+  else{
+    suggestions.innerHTML = "";
+  }
+
+}
+
+const searchInput = document.querySelector(".search");
+const suggestions = document.querySelector(".suggestions");
+
+searchInput.addEventListener("change", displayMatches)
+searchInput.addEventListener("keyup", displayMatches)
+
+
